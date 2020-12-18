@@ -16,7 +16,7 @@ app.get("/newFeeds", async (req,res) =>  {
       .skip(sani(req.query.offset, 0))
        .limit(sani(req.query.limit, 10)));
 });
-const an 
+
 const sani = (value,defaultValue) => {
     if(value === null || value === undefined || isNaN(Number(value))){
         return defaultValue;
