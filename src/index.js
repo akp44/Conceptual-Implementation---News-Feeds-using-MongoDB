@@ -10,7 +10,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get("/newFeeds", async(req,res)=>{
-   res.send( await newsArticleModel.find().skip(Number(req.query.offset || 0)).limit(san(req.query.limit, 10)));
+   res.send( await newsArticleModel
+      .find().skip(san(req.query.offset, 0))
+       .limit(san(req.query.limit, 10)));
 })
 const san = (value,defaultValue)=>{
     if(value == null || value == undefined || isNaN(Number(value)))
