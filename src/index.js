@@ -9,7 +9,7 @@ const onePageArticleCount = 10
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get("/newsFeeds", async(req,res)=>{
+app.get("/newFeeds", async(req,res)=>{
    res.send( await newsArticleModel.find().skip(Number(req.query.offset || 0)).limit(san(req.query.limit, 10)));
 })
 const san = (value,defaultValue)=>{
