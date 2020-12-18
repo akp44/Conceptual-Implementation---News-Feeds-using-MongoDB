@@ -13,7 +13,7 @@ app.get("/newFeeds", async(req,res)=>{
    res.send( await newsArticleModel.find().skip(Number(req.query.offset || 0)).limit(san(req.query.limit, 10)));
 })
 const san = (value,defaultValue)=>{
-    if(value == null || value == undefined || Number(value))
+    if(value == null || value == undefined || isNaN(Number(value)))
         return defaultValue;
     else
         return Number(value);
