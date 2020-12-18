@@ -9,15 +9,16 @@ const onePageArticleCount = 10
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get("/newFeeds", async(req,res)=>{
+app.get("/newFeeds", async (req,res) =>  {
    res.send( 
       await newsArticleModel
       .find()
-      .skip(san(req.query.offset, 0))
-       .limit(san(req.query.limit, 10)));
+      .skip(sani(req.query.offset, 0))
+       .limit(sani(req.query.limit, 10)));
 });
-const san = (value,defaultValue)=>{
-    if(value == null || value == undefined || isNaN(Number(value))){
+const an 
+const sani = (value,defaultValue) => {
+    if(value === null || value === undefined || isNaN(Number(value))){
         return defaultValue;
     }else{
         return Number(value);
